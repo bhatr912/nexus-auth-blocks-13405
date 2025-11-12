@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthCard } from "@/components/auth/AuthCard";
-import { AuthTabs } from "@/components/auth/AuthTabs";
 import { ProviderButtons } from "@/components/auth/ProviderButtons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -30,8 +29,6 @@ const Login = () => {
     });
   };
   return <AuthCard logo="Able" title="PRO">
-      <AuthTabs />
-
       <form onSubmit={handleLogin} className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="email" className="text-xs text-muted-foreground">
@@ -51,6 +48,13 @@ const Login = () => {
           Login
         </Button>
       </form>
+
+      <p className="text-center text-sm text-muted-foreground mt-4">
+        Don't have an account?{" "}
+        <Link to="/register" className="text-primary font-medium hover:underline">
+          Create
+        </Link>
+      </p>
 
       <ProviderButtons onProviderClick={handleSocialLogin} />
     </AuthCard>;

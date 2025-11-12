@@ -109,3 +109,81 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* Bubble decorations for auth pages */
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(2px);
+  animation: float 20s infinite ease-in-out;
+}
+
+.bubble-1 {
+  width: 120px;
+  height: 120px;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+  animation-duration: 25s;
+}
+
+.bubble-2 {
+  width: 80px;
+  height: 80px;
+  top: 70%;
+  left: 15%;
+  animation-delay: 3s;
+  animation-duration: 20s;
+}
+
+.bubble-3 {
+  width: 100px;
+  height: 100px;
+  top: 20%;
+  right: 15%;
+  animation-delay: 1s;
+  animation-duration: 22s;
+}
+
+.bubble-4 {
+  width: 60px;
+  height: 60px;
+  bottom: 20%;
+  right: 20%;
+  animation-delay: 2s;
+  animation-duration: 18s;
+}
+
+.bubble-5 {
+  width: 140px;
+  height: 140px;
+  bottom: 10%;
+  left: 20%;
+  animation-delay: 4s;
+  animation-duration: 28s;
+}
+
+.bubble-6 {
+  width: 90px;
+  height: 90px;
+  top: 50%;
+  right: 10%;
+  animation-delay: 2.5s;
+  animation-duration: 24s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-15px);
+  }
+  75% {
+    transform: translateY(-30px) translateX(5px);
+  }
+}

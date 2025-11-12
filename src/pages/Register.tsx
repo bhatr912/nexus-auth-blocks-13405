@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthCard } from "@/components/auth/AuthCard";
-import { AuthTabs } from "@/components/auth/AuthTabs";
 import { ProviderButtons } from "@/components/auth/ProviderButtons";
 import { PasswordStrengthIndicator } from "@/components/auth/PasswordStrengthIndicator";
 import { Button } from "@/components/ui/button";
@@ -33,8 +32,6 @@ const Register = () => {
     });
   };
   return <AuthCard logo="Able" title="PRO">
-      <AuthTabs />
-
       <form onSubmit={handleRegister} className="space-y-4">
         <div className="grid grid-cols-2 gap-3">
           <div className="space-y-2">
@@ -63,7 +60,14 @@ const Register = () => {
         </Button>
       </form>
 
-      
+      <p className="text-center text-sm text-muted-foreground mt-4">
+        Already have an account?{" "}
+        <Link to="/login" className="text-primary font-medium hover:underline">
+          Login
+        </Link>
+      </p>
+
+      <ProviderButtons onProviderClick={handleSocialLogin} />
     </AuthCard>;
 };
 export default Register;
