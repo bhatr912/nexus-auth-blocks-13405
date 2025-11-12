@@ -114,9 +114,10 @@ All colors MUST be HSL.
 .bubble {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+  background: radial-gradient(circle at 30% 30%, rgba(200, 200, 200, 0.4), rgba(180, 180, 180, 0.15));
   backdrop-filter: blur(2px);
   animation: float 20s infinite ease-in-out;
+  border: 1px solid rgba(160, 160, 160, 0.2);
 }
 
 .bubble-1 {
