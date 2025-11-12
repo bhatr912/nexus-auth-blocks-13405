@@ -9,9 +9,16 @@ interface AuthCardProps {
 
 export const AuthCard = ({ children, logo = "Able", title }: AuthCardProps) => {
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'var(--gradient-auth)' }}>
+    <div 
+      className="min-h-screen flex items-center justify-center p-4" 
+      style={{ 
+        background: 'var(--gradient-auth)',
+        backgroundImage: 'var(--auth-pattern)',
+        backgroundSize: '20px 20px'
+      }}
+    >
       <Card className="w-full max-w-md p-8 shadow-xl">
-        <div className="mb-8 text-center">
+        <div className="mb-6 text-center">
           <h1 className="text-3xl font-bold text-primary mb-1">{logo}</h1>
           {title && <p className="text-sm text-muted-foreground">{title}</p>}
         </div>

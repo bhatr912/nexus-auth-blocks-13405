@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthCard } from "@/components/auth/AuthCard";
+import { AuthTabs } from "@/components/auth/AuthTabs";
 import { ProviderButtons } from "@/components/auth/ProviderButtons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
+import { PasswordInput } from "@/components/ui/password-input";
 import { useToast } from "@/hooks/use-toast";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [keepSignedIn, setKeepSignedIn] = useState(false);
   const {
     toast
   } = useToast();
@@ -30,13 +30,7 @@ const Login = () => {
     });
   };
   return <AuthCard logo="Able" title="PRO">
-
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold">Login</h2>
-        <Link to="/register" className="text-sm text-primary hover:underline">
-          Don't have an account?
-        </Link>
-      </div>
+      <AuthTabs />
 
       <form onSubmit={handleLogin} className="space-y-4">
         <div className="space-y-2">
@@ -50,10 +44,8 @@ const Login = () => {
           <Label htmlFor="password" className="text-xs text-muted-foreground">
             Password
           </Label>
-          <Input id="password" type="password" placeholder="••••••" value={password} onChange={e => setPassword(e.target.value)} required />
+          <PasswordInput id="password" placeholder="••••••" value={password} onChange={e => setPassword(e.target.value)} required />
         </div>
-
-        
 
         <Button type="submit" className="w-full">
           Login
