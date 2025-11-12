@@ -16,6 +16,6 @@ export const ProviderButtons = ({
     icon: "🔒"
   }];
   return <div className="flex gap-2 justify-center pt-4">
-      {providers.map(provider => {})}
+      {providers.map(provider => null)}
     </div>;
 };
