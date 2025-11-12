@@ -67,7 +67,7 @@ const Register = () => {
         </Link>
       </p>
 
-      <ProviderButtons onProviderClick={handleSocialLogin} />
+      
     </AuthCard>;
 };
 export default Register;
