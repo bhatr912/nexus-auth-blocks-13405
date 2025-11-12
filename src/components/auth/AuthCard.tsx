@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
+import { useLocation } from "react-router-dom";
 import { Card } from "@/components/ui/card";
+import { LogIn, UserPlus } from "lucide-react";
 
 interface AuthCardProps {
   children: ReactNode;
@@ -8,27 +10,31 @@ interface AuthCardProps {
 }
 
 export const AuthCard = ({ children, logo = "Able", title }: AuthCardProps) => {
+  const location = useLocation();
+  const isLogin = location.pathname === "/login";
+  
   return (
     <div 
-      className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden" 
+      className="min-h-screen flex items-center justify-center p-4" 
       style={{ 
-        background: 'var(--gradient-auth)',
-        backgroundImage: 'var(--auth-pattern)',
-        backgroundSize: '20px 20px'
+        background: 'var(--gradient-auth)'
       }}
     >
-      {/* Bubble decorations */}
-      <div className="bubble bubble-1" />
-      <div className="bubble bubble-2" />
-      <div className="bubble bubble-3" />
-      <div className="bubble bubble-4" />
-      <div className="bubble bubble-5" />
-      <div className="bubble bubble-6" />
-      
-      <Card className="w-full max-w-md p-8 shadow-xl relative z-10">
-        <div className="mb-6 text-center">
-          <h1 className="text-3xl font-bold text-primary mb-1">{logo}</h1>
-          {title && <p className="text-sm text-muted-foreground">{title}</p>}
+      <Card className="w-full max-w-md p-8 shadow-xl">
+        <div className="mb-8 text-center">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+            {isLogin ? (
+              <LogIn className="w-8 h-8 text-primary" />
+            ) : (
+              <UserPlus className="w-8 h-8 text-primary" />
+            )}
+          </div>
+          <h1 className="text-2xl font-bold text-foreground mb-1">
+            {isLogin ? "Login" : "Register"}
+          </h1>
+          <p className="text-sm text-muted-foreground">
+            {logo} {title}
+          </p>
         </div>
         {children}
       </Card>
