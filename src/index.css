@@ -36,7 +36,7 @@ All colors MUST be HSL.
     --input: 240 11% 96%;
     --ring: 222 100% 63%;
 
-    --radius: 0.5rem;
+    --radius: 1.5rem;
     
     --gradient-auth: hsl(40, 30%, 97%);
 
