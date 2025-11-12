@@ -56,7 +56,7 @@ const Login = () => {
         </Link>
       </p>
 
-      <ProviderButtons onProviderClick={handleSocialLogin} />
+      
     </AuthCard>;
 };
 export default Login;
