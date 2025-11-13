@@ -15,11 +15,10 @@ export function DashboardHeader() {
       </div>
 
       <div className="flex items-center gap-1">
-        
-        
-        
-        
-        
+        <Button variant="ghost" size="icon" className="relative">
+          <Bell className="h-5 w-5" />
+          <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-destructive" />
+        </Button>
         
         <div className="ml-2 pl-2 border-l">
           <Button variant="ghost" size="icon" className="h-10 w-10 rounded-full p-0">
