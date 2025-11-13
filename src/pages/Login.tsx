@@ -16,11 +16,16 @@ const Login = () => {
   const navigate = useNavigate();
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("Login button clicked");
     toast({
       title: "Login Successful",
       description: "Welcome back!"
     });
-    navigate("/dashboard");
+    console.log("Navigating to dashboard...");
+    setTimeout(() => {
+      navigate("/dashboard");
+      console.log("Navigation called");
+    }, 100);
   };
   const handleSocialLogin = (provider: string) => {
     toast({
