@@ -20,7 +20,7 @@ const Login = () => {
       title: "Login Successful",
       description: "Welcome back!"
     });
-    navigate("/");
+    navigate("/dashboard");
   };
   const handleSocialLogin = (provider: string) => {
     toast({
