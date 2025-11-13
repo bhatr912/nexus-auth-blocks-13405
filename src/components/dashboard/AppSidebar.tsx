@@ -1,10 +1,11 @@
-import { LayoutDashboard, Package, ShoppingCart, List, User } from "lucide-react";
+import { LayoutDashboard, Package, ShoppingCart, List, ChevronRight } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
@@ -12,9 +13,9 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
-const menuItems = [
+const dashboardItems = [
   { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
   { title: "Products", url: "/dashboard/products", icon: Package },
   { title: "Orders", url: "/dashboard/orders", icon: ShoppingCart },
@@ -25,34 +26,45 @@ export function AppSidebar() {
   const { open } = useSidebar();
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className="border-r">
       <SidebarContent>
-        <SidebarGroup>
-          <div className="px-4 py-6">
-            <h2 className={`font-bold text-xl text-primary ${!open && "hidden"}`}>
-              Dashboard
-            </h2>
-            {!open && (
-              <div className="flex justify-center">
-                <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold">
-                  D
-                </div>
+        {/* Logo/Brand Section */}
+        <div className="px-4 py-6">
+          {open ? (
+            <div className="flex items-baseline gap-1">
+              <h1 className="text-2xl font-bold text-primary">Able</h1>
+              <span className="text-xs text-muted-foreground font-semibold px-1.5 py-0.5 bg-primary/10 rounded">
+                PRO
+              </span>
+            </div>
+          ) : (
+            <div className="flex justify-center">
+              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm">
+                A
               </div>
-            )}
-          </div>
-          <Separator className="mb-4" />
+            </div>
+          )}
+        </div>
+
+        {/* Dashboard Section */}
+        <SidebarGroup>
+          {open && (
+            <SidebarGroupLabel className="text-xs font-semibold text-muted-foreground px-4 mb-2">
+              DASHBOARD
+            </SidebarGroupLabel>
+          )}
           <SidebarGroupContent>
             <SidebarMenu>
-              {menuItems.map((item) => (
+              {dashboardItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild tooltip={item.title}>
                     <NavLink
                       to={item.url}
                       end={item.url === "/dashboard"}
-                      className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                      activeClassName="bg-sidebar-accent text-sidebar-accent-foreground font-medium"
+                      className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors"
+                      activeClassName="bg-sidebar-accent text-primary font-medium"
                     >
-                      <item.icon className="h-5 w-5" />
+                      <item.icon className="h-4 w-4" />
                       <span>{item.title}</span>
                     </NavLink>
                   </SidebarMenuButton>
@@ -63,28 +75,35 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter>
-        <div className="p-4">
-          <Separator className="mb-4" />
-          <div className={`flex items-center gap-3 ${!open && "justify-center"}`}>
-            <Avatar className="h-10 w-10">
-              <AvatarImage src="/placeholder.svg" alt="User" />
-              <AvatarFallback className="bg-primary text-primary-foreground">
-                JD
-              </AvatarFallback>
-            </Avatar>
-            {open && (
-              <div className="flex flex-col min-w-0">
-                <p className="text-sm font-medium text-sidebar-foreground truncate">
-                  John Doe
-                </p>
-                <p className="text-xs text-muted-foreground truncate">
-                  john@example.com
-                </p>
+      {/* Footer Profile Section */}
+      <SidebarFooter className="border-t">
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton className="h-auto p-3 hover:bg-sidebar-accent">
+              <div className={`flex items-center gap-3 w-full ${!open && "justify-center"}`}>
+                <Avatar className="h-10 w-10 border-2 border-primary/20">
+                  <AvatarImage src="/placeholder.svg" alt="User" />
+                  <AvatarFallback className="bg-primary text-primary-foreground font-medium">
+                    JD
+                  </AvatarFallback>
+                </Avatar>
+                {open && (
+                  <>
+                    <div className="flex flex-col flex-1 min-w-0">
+                      <p className="text-sm font-semibold text-sidebar-foreground truncate">
+                        John Doe
+                      </p>
+                      <p className="text-xs text-muted-foreground truncate">
+                        UI/UX Designer
+                      </p>
+                    </div>
+                    <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                  </>
+                )}
               </div>
-            )}
-          </div>
-        </div>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarFooter>
     </Sidebar>
   );
